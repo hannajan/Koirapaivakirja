@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Koirapäiväkirjasovellus</title>
+  </head>
+
+  <body>
+      <ul>
+          <li><a href="{{ url_for('handlers_form') }}">Lisää hoitaja</a></li>
+          <li><a href="{{ url_for('handlers_index') }}">Näytä hoitajat</a></li>
+      </ul>
+
+    {% block body %}
+      <p>
+        Content.
+      </p>
+    {% endblock %}
+  </body>
+</html>
