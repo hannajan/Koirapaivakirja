@@ -4,10 +4,16 @@
   <table>
     <tr>
       <th>Hoitajat</th>
+      <th></th>
     </tr>
     {% for handler in handlers %}
     <tr>
       <td>{{ handler.name }}</td>
+      <td>
+        <form method="GET" action="{{ url_for('handlers_modify_form', handler_id=handler.id)}}">
+          <input type=submit value="muokkaa"></input>
+        </form>
+      </td>
     </tr>
     {% endfor %}
   </table>
