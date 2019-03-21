@@ -17,6 +17,6 @@ Toimintoja:
 
 [Linkki sovellukseen Herokussa](https://koirapaivakirjasovellus.herokuapp.com/)
 
-[Käyttötapaukset](https://github.com/hannajan/Koirapaivakirja/blob/master/documentation/doc.txt)
+[Käyttötapaukset](https://github.com/hannajan/Koirapaivakirja/blob/master/documentation/userStories.md)
 
 [Tietokantakaavio](https://github.com/hannajan/Koirapaivakirja/blob/master/documentation/tietokantakaavio.pdf)
