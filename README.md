@@ -14,3 +14,9 @@ Toimintoja:
 - Toimenpiteen viimeisin suoritusajankohta
 - Parhaiden/ahkerimpien hoitajien listaus
 - Pisimmän yhteismatkan lenkkeilleen koiran tiedot
+
+[Linkki sovellukseen Herokussa](https://koirapaivakirjasovellus.herokuapp.com/)
+
+[Käyttötapaukset](https://github.com/hannajan/Koirapaivakirja/blob/master/documentation/doc.txt)
+
+[Tietokantakaavio](https://github.com/hannajan/Koirapaivakirja/blob/master/documentation/tietokantakaavio.pdf)
