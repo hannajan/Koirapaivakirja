@@ -14,8 +14,11 @@ Toimintoja:
 - Pisimmän yhteismatkan lenkkeilleen koiran tiedot
 
 [Linkki sovellukseen Herokussa](https://koirapaivakirjasovellus.herokuapp.com/)
+
 Testitunnukset
+
 Käyttäjätunnus: testi
+
 Salasana: salasana
 
 [Käyttötapaukset](https://github.com/hannajan/Koirapaivakirja/blob/master/documentation/userStories.md)
