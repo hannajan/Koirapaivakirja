@@ -19,4 +19,4 @@ Toimintoja:
 
 [Käyttötapaukset](https://github.com/hannajan/Koirapaivakirja/blob/master/documentation/userStories.md)
 
-[Tietokantakaavio](https://github.com/hannajan/Koirapaivakirja/blob/master/documentation/tietokantakaavio.pdf)
+[Tietokantakaavio](https://github.com/hannajan/Koirapaivakirja/blob/master/documentation/Tietokantakaavio(4).pdf)
