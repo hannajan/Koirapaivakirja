@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+  
+{% block body %}
+<form method="POST" action="{{ url_for('dogs_create') }}">
+  <table>
+    <tr>
+      <th>Tyyppi</th>
+      <th >Kentät</th>
+    </tr>
+    <tr>
+      <td>
+        {{ form.name.label}}
+      </td>
+      <td>
+        {{ form.name }}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.name.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        {{ form.breed.label }}
+      </td>
+      <td>
+        {{ form.breed }}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.breed.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+    </td>
+    </tr>
+    <tr>
+      <td>
+        {{ form.birthday.label }}
+      </td>
+      <td>
+        {{ form.birthday }}
+     
+        {{ form.birthmonth }}
+      
+        {{ form.birthyear }}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.birthday.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+          {% for error in form.birthmonth.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+          {% for error in form.birthyear.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <input type="submit" value="Lisää koira"/>
+      </td>
+    </tr>
+    </table>
+</form>
+
+{% endblock %}
