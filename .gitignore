@@ -121,5 +121,4 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-dogs.db
-handlers.db
+dogsapp.db
