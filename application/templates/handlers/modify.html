@@ -1,19 +1,28 @@
 {% extends "layout.html" %}
 
 {% block body %}
+<form method="POST" action="{{ url_for('handlers_set_name', handler_id=handler_id) }}">
 <table>
     <tr>
-        <td>Nimi</td>
-        <td></td>
-    </tr>
+        <td colspan="2">
+            {{ form.name.label }}
+        </td>
+    </tr>    
     <tr>
         <td>
-            <form method="POST" action="{{ url_for('handlers_set_name', handler_id=handler_id) }}">
-                <input type="text" name="newname"/>
-                <input type="submit" value="muuta"/>
-            </form>
+            {{ form.name }}
         </td>
+        <td>
+            <input type="submit" value="muuta"/>
+        </td>
+        <td>
+            <ul>
+                {% for error in form.name.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        </td>       
     </tr>
-</table>
+</form>
 
 {% endblock %}
