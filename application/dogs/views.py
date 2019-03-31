@@ -30,4 +30,4 @@ def dogs_create():
     db.session().add(dog)
     db.session().commit()
     
-    return "Koira lisätty!"
+    return redirect(url_for("index"))
