@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block body %}
+{{ error }}
+
+<form method="POST" action="{{ url_for('create_account') }}">
+    <table>
+        <tr>
+            <td>
+                {{ form.name.label }}
+            </td>
+            <td>
+                {{ form.name }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ form.username.label }}
+            </td>
+            <td>
+                {{ form.username }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ form.password.label }}
+            </td>
+            <td>
+                {{ form.password }}
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Luo käyttäjätunnus"/>
+            </td>
+        </tr>
+    </form>
+
+{% endblock %}
