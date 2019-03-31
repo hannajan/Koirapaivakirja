@@ -21,7 +21,11 @@ def dogs_create():
     dog = Dog()
     dog.name = form.name.data
     dog.breed = form.breed.data
-    dog.birthday = datetime(form.birthyear.data, form.birthmonth.data, form.birthday.data)
+    try:
+        dog.birthday = datetime(form.birthyear.data, form.birthmonth.data, form.birthday.data)
+    except:
+        errorMessage = ["Päivämäärää ei ole olemassa"]
+        return render_template("dogs/new.html", form=form, errorMessage = errorMessage)   
     
     db.session().add(dog)
     db.session().commit()

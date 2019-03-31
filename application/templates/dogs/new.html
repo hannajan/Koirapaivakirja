@@ -60,6 +60,9 @@
           {% for error in form.birthyear.errors %}
           <li>{{ error }}</li>
           {% endfor %}
+          {% for msg in errorMessage%}
+          <li>{{ msg }}</li>
+          {% endfor %}
         </ul>
       </td>
     </tr>
