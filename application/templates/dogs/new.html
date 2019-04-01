@@ -39,11 +39,12 @@
         {{ form.birthday.label }}
       </td>
       <td>
-        {{ form.birthday }}
+        {{ form.birthday(size=3.5, maxlength=5) }}
      
-        {{ form.birthmonth }}
+        {{ form.birthmonth(size=3.5, maxlength=5) }}
       
-        {{ form.birthyear }}
+        {{ form.birthyear(size=9, maxlength=10) }}
+        (pp/kk/vvvv)
       </td>
       <td>
         <ul>
