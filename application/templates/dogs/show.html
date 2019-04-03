@@ -1,23 +1,36 @@
 {% extends "layout.html" %}
 
 {% block body %}
+<form method="POST" action="{{ url_for('dogs_modify', dog_id=dog.id )}}">
 <table>
-
-{% for dog in dogs %}    
     <tr>
-        <th>{{ form.name.label }}</th>
+        <td>{{ form.name.label }}</td>
         <td colspan="3">
             {{ form.name(value=dog.name) }} 
         </td>
-    </tr>
+        <td>
+            <ul>
+            {% for error in form.name.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+            </ul>
+        </td>
+    </tr>  
     <tr>
-        <th>{{ form.breed.label }}</th>
+        <td>{{ form.breed.label }}</td>
         <td colspan="3">
             {{ form.breed(value=dog.breed )}}
         </td>
+        <td>
+            <ul>
+            {% for error in form.breed.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+            </ul>
+        </td>
     </tr>
     <tr>
-        <th>{{ form.birthday.label }}</th>
+        <td>{{ form.birthday.label }}</td>
         <td>
             {{ form.birthday(size=3.5, value=day)}}
         </td>
@@ -27,7 +40,28 @@
         <td>
             {{ form.birthyear(size=9, value=year)}}
         </td>
+        <td>
+            <ul>
+            {% for error in form.birthday.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+            {% for error in form.birthmonth.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+            {% for error in form.birthyear.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+            {% for msg in errorMessage%}
+            <li>{{ msg }}</li>
+            {% endfor %}
+            </ul>
+        </td>
     </tr>
+    <tr>
+        <td colspan="4">
+            <input type="submit" value="Tallenna muutokset"/>
+        </td>
+    </tr>
+</form>
 
-{% endfor %}
 {% endblock %}

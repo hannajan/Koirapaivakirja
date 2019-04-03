@@ -38,8 +38,35 @@ def dogs_create():
 
 @app.route("/dogs/<dog_id>")
 def dogs_show(dog_id):
-    dogs = Dog.query.filter_by(id=dog_id)
-    day = dogs[0].birthday.strftime("%d")
-    month = dogs[0].birthday.strftime("%m")
-    year = dogs[0].birthday.strftime("%Y")
-    return render_template("dogs/show.html", dogs=dogs, day=day, month=month, year=year, form=DogForm())
+    dog = Dog.query.get(dog_id)
+    day = dog.birthday.strftime("%d")
+    month = dog.birthday.strftime("%m")
+    year = dog.birthday.strftime("%Y")
+
+    return render_template("dogs/show.html", dog=dog, day=day, month=month, year=year, form=DogForm())
+
+@app.route("/dogs/<dog_id>/modify", methods=["GET", "POST"])
+def dogs_modify(dog_id):
+    form = DogForm(request.form)
+    dog = Dog.query.get(dog_id)
+    day = dog.birthday.strftime("%d")
+    month = dog.birthday.strftime("%m")
+    year = dog.birthday.strftime("%Y")
+
+    if not form.validate():
+        return render_template("dogs/show.html", form = form, dog=dog, day=day, month=month, year=year)
+
+
+
+    dog.name = form.name.data
+    dog.breed = form.breed.data
+    
+    try:
+        dog.birthday = datetime(form.birthyear.data, form.birthmonth.data, form.birthday.data)
+    except:
+        errorMessage = ["Päivämäärää ei ole olemassa"]
+        return render_template("dogs/show.html", form=form, errorMessage = errorMessage, dog=dog, day=day, month=month, year=year) 
+
+    db.session.commit()
+
+    return redirect(url_for("dogs_index"))
