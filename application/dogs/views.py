@@ -34,7 +34,7 @@ def dogs_create():
     db.session().add(dog)
     db.session().commit()
     
-    return redirect(url_for("index"))
+    return redirect(url_for("dogs_index"))
 
 @app.route("/dogs/<dog_id>")
 def dogs_show(dog_id):
