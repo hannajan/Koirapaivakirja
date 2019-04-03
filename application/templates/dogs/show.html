@@ -63,5 +63,11 @@
         </td>
     </tr>
 </form>
-
+<form method="POST" action="{{ url_for('dogs_delete', dog_id=dog.id )}}">
+    <tr>
+        <td>
+            <input type="submit" value="Poista koira"/>
+        </td>
+    </tr>
+</form>
 {% endblock %}
