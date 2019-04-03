@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<table>
+    <tr>
+        <th>Koirat</th>
+    </tr>
+{% for dog in dogs %}    
+    <tr>
+        <td>
+            <a href="{{ url_for('dogs_show', dog_id=dog.id) }}">{{ dog.name }}</a>
+        </td>
+    </tr>
+{% endfor %}
+
+{% endblock %}

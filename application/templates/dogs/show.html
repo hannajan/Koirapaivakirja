@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<table>
+
+{% for dog in dogs %}    
+    <tr>
+        <th>{{ form.name.label }}</th>
+        <td colspan="3">
+            {{ form.name(value=dog.name) }} 
+        </td>
+    </tr>
+    <tr>
+        <th>{{ form.breed.label }}</th>
+        <td colspan="3">
+            {{ form.breed(value=dog.breed )}}
+        </td>
+    </tr>
+    <tr>
+        <th>{{ form.birthday.label }}</th>
+        <td>
+            {{ form.birthday(size=3.5, value=day)}}
+        </td>
+        <td>
+            {{ form.birthmonth(size=3.5, value=month)}}
+        </td>
+        <td>
+            {{ form.birthyear(size=9, value=year)}}
+        </td>
+    </tr>
+
+{% endfor %}
+{% endblock %}

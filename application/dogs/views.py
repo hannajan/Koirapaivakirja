@@ -5,6 +5,10 @@ from flask_login import login_required
 from application.dogs.models import Dog
 from application.dogs.forms import DogForm
 
+@app.route("/dogs", methods=["GET"])
+def dogs_index():
+    return render_template("dogs/list.html", dogs = Dog.query.all())
+
 @app.route("/dogs/new/")
 @login_required
 def dogs_form():
@@ -31,3 +35,11 @@ def dogs_create():
     db.session().commit()
     
     return redirect(url_for("index"))
+
+@app.route("/dogs/<dog_id>")
+def dogs_show(dog_id):
+    dogs = Dog.query.filter_by(id=dog_id)
+    day = dogs[0].birthday.strftime("%d")
+    month = dogs[0].birthday.strftime("%m")
+    year = dogs[0].birthday.strftime("%Y")
+    return render_template("dogs/show.html", dogs=dogs, day=day, month=month, year=year, form=DogForm())
