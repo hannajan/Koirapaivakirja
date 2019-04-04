@@ -1,4 +1,5 @@
 from application import db
+from sqlalchemy import text
 
 class User(db.Model):
 
@@ -14,6 +15,7 @@ class User(db.Model):
     password = db.Column(db.String(144), nullable=False)
 
     handlers = db.relationship("Handler", backref='account', lazy=True)
+    dogs = db.relationship("Dog", backref='account', lazy=True)
 
     def __init__(self, name, username, password):
         self.name = name
@@ -32,3 +34,16 @@ class User(db.Model):
     def is_authenticated(self):
         return True
     
+    @staticmethod
+    def find_number_of_dogs():
+        stmt = text("SELECT Account.username, COUNT(dog.id) FROM Account"
+                    " LEFT JOIN Dog ON Dog.account_id = Account.id"
+                    " GROUP BY Account.id"
+                    " ORDER BY Account.username")
+        res = db.engine.execute(stmt)
+
+        response = []
+        for row in res:
+            response.append({"username":row[0], "dogs":row[1]})
+
+        return response

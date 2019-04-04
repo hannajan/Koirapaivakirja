@@ -1,14 +1,14 @@
 from datetime import datetime
 from application import app, db
 from flask import render_template, request, redirect, url_for
-from flask_login import login_required
+from flask_login import login_required, current_user
 from application.dogs.models import Dog
 from application.dogs.forms import DogForm
 
 @app.route("/dogs", methods=["GET"])
 @login_required
 def dogs_index():
-    return render_template("dogs/list.html", dogs = Dog.query.all())
+    return render_template("dogs/list.html", dogs = Dog.query.filter_by(account_id=current_user.id))
 
 @app.route("/dogs/new/")
 @login_required
@@ -26,6 +26,7 @@ def dogs_create():
     dog = Dog()
     dog.name = form.name.data
     dog.breed = form.breed.data
+    dog.account_id = current_user.id
     try:
         dog.birthday = datetime(form.birthyear.data, form.birthmonth.data, form.birthday.data)
     except:

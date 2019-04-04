@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+
+{% if user_dogs is defined %}
+<h2>Käyttäjillä koiria</h2>
+<table>
+    <tr>
+        <th width="100">Käyttäjä</th>
+        <th>Koiria</th>
+    </tr>
+<ul>
+    {% for user in user_dogs %}
+    <tr>
+    <td>
+        {{user.username}}
+    </td>
+    <td>
+        {{user.dogs}}
+    </td>
+    </tr>
+    {% endfor %}
+</ul>
+
+{% endif %}
+
+{% endblock %}

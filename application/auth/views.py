@@ -40,3 +40,7 @@ def create_account():
     
     return redirect(url_for("auth_login"))
 
+@app.route("/auth/stat")
+def account_stat():
+    return render_template("auth/stat.html", user_dogs=User.find_number_of_dogs())
+
