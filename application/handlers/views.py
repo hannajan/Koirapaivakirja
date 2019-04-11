@@ -17,7 +17,8 @@ def handlers_form():
 @app.route("/handlers/modify_<handler_id>/", methods=["GET"])
 @login_required
 def handlers_modify_form(handler_id):
-    return render_template("handlers/modify.html", handler_id=handler_id, form = HandlerForm())
+    handler = Handler.query.get(handler_id)
+    return render_template("handlers/modify.html", handler=handler, form = HandlerForm())
 
 @app.route("/handlers/<handler_id>/", methods=["POST"])
 @login_required
@@ -44,10 +45,10 @@ def handlers_create():
     if not form.validate():
         return render_template("handlers/new.html", form = form)
 
-    t = Handler(form.name.data)
-    t.account_id = current_user.id
+    h = Handler(form.name.data)
+    h.account_id = current_user.id
 
-    db.session.add(t)
+    db.session.add(h)
     db.session.commit()
 
     return redirect(url_for("handlers_index"))

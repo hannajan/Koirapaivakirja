@@ -1,0 +1,126 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<form method="POST" action="{{ url_for('walks_create') }}">
+    <table>
+        <tr>
+            <th>Lenkin tiedot</th>
+        </tr>
+        <tr>
+            <td>
+                {{ form.day.label}}
+            </td>
+            <td>
+                {{ form.day(size=3.5, maxlength=5) }}
+     
+                    {{ form.month(size=3.5, maxlength=5) }}
+                  
+                    {{ form.year(size=9, maxlength=10) }}
+                    (pp/kk/vvvv)
+            </td>
+            <td>
+                <ul>
+                    {% for error in form.day.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                    {% for error in form.month.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                    {% for error in form.year.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ form.startHour.label}}
+            </td>
+            <td>
+                {{ form.startHour(size=3.5)}}
+                :
+                {{ form.startMinute(size=3.5)}}
+                (tt:mm)
+            </td>
+            <td>
+                <ul>
+                    {% for error in form.startHour.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                    {% for error in form.startMinute.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                    {% for error in errorStart %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ form.endHour.label }}
+            </td>
+            <td>
+                {{ form.endHour(size=3.5)}}
+                :
+                {{ form.endMinute(size=3.5)}}
+                (tt:mm)
+            </td>
+            <td>
+                <ul>
+                    {% for error in form.endHour.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                    {% for error in form.endMinute.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                    {% for error in errorEnd %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ form.place.label }}
+            </td>
+            <td>
+                {{ form.place }}
+            </td>
+            <td>
+                <ul>
+                    {% for error in form.place.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ form.length.label }}
+            </td>
+            <td>
+                {{ form.length}}
+            </td>
+            <td>
+                <ul>
+                    {% for error in form.length.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <th>Hoitajat</th>
+        </tr>
+        <td>
+            {{ form.handlers }}
+        </td>
+        </select>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Tallenna"/>
+            </td>
+        </tr>
+</form>
+{% endblock %}

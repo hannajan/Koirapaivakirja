@@ -19,6 +19,8 @@ from application.handlers import models
 from application.handlers import views
 from application.dogs import models
 from application.dogs import views
+from application.walks import models
+from application.walks import views
 
 from application.auth import models
 from application.auth import views

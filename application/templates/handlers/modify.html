@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block body %}
-<form method="POST" action="{{ url_for('handlers_set_name', handler_id=handler_id) }}">
+<form method="POST" action="{{ url_for('handlers_set_name', handler_id=handler.id) }}">
 <table>
     <tr>
         <td colspan="2">
@@ -10,7 +10,7 @@
     </tr>    
     <tr>
         <td>
-            {{ form.name }}
+            {{ form.name(value=handler.name) }}
         </td>
         <td>
             <input type="submit" value="muuta"/>

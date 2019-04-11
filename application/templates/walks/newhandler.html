@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<table>
+<tr>
+    <th> Valitse hoitajat</th>
+</tr>
+    {% for handler in handlers %}
+    <tr>
+       <td>{{ handler.name }}</td>
+    </tr>
+    {% endfor %}
+
+{% endblock %}
