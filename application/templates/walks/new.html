@@ -111,10 +111,10 @@
             </td>
         </tr>
         <tr>
-            <th>Hoitajat</th>
+            <th>{{ form.handlers.label }}</th>
         </tr>
         <td>
-            {{ form.handlers }}
+            {{ form.handlers(class="multiselect") }}
         </td>
         <td>
             {% for error in form.handlers.errors %}
