@@ -10,7 +10,9 @@ from application.handlers.models import Handler
 @app.route("/walks/new/")
 @login_required
 def walks_form():
-    return render_template("walks/new.html", form = WalkForm(), handlers=Handler.query.filter_by(account_id=current_user.id))
+    form = WalkForm()
+    form.handlers.choices = [(handler.id, handler.name) for handler in Handler.query.filter_by(account_id=current_user.id)]
+    return render_template("walks/new.html", form=form)
 
 @app.route("/walks/", methods=["GET", "POST"])
 @login_required
@@ -44,10 +46,14 @@ def walks_create():
     db.session().add(walk)
     db.session().flush()
     db.session().refresh(walk)
+
+    for handler_id in form.handlers.data:
+        walkhandler = WalkHandler(walk.id, handler_id)
+        db.session().add(walkhandler)
     db.session().commit()
     
 
-    return render_template("walks/newhandler.html", walk_id=walk.id, handlers= Handler.query.filter_by(account_id=current_user.id))
+    return render_template("index.html")
 
 @app.route("/walks/sethandler")
 @login_required

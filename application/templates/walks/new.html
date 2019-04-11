@@ -116,6 +116,11 @@
         <td>
             {{ form.handlers }}
         </td>
+        <td>
+            {% for error in form.handlers.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+        </td>
         </select>
         <tr>
             <td colspan="2">
