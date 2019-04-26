@@ -1,6 +1,6 @@
 from application import db
 from sqlalchemy import text
-
+from datetime import datetime
 class User(db.Model):
 
     __tablename__ = "account"
@@ -53,12 +53,13 @@ class User(db.Model):
         stmt = text("SELECT DISTINCT(Walk.id), Walk.place, Walk.start FROM Walk"
                     " JOIN walk_handler ON walk_handler.walk_id = walk.id"
                     " JOIN handler ON handler.id = walk_handler.handler_id"
-                    "  WHERE handler.account_id = :account_id").params(account_id=account_id)
-                    
+                    "  WHERE handler.account_id = :account_id"
+                    " ORDER BY Walk.start DESC").params(account_id=account_id)
+
         res = db.engine.execute(stmt)
 
         response = []
         for row in res:
-            response.append({"walk_id":row[0], "place":row[1], "start":row[2]})
+            response.append({"walk_id":row[0], "place":row[1], "start":datetime.strptime(row[2], '%Y-%m-%d %H:%M:%S.%f').strftime('%d/%m/%Y') })
 
         return response
