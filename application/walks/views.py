@@ -6,7 +6,13 @@ from application.walks.forms import WalkForm
 from datetime import datetime
 from application.handlers.models import Handler
 from application.dogs.models import Dog
+from application.auth.models import User
 
+
+@app.route("/walks", methods=["GET"])
+@login_required
+def walks_index():
+    return render_template("walks/list.html", walks = User.list_walks(current_user.id))
 
 @app.route("/walks/new/")
 @login_required

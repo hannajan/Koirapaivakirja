@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<table>
+    <tr>
+        <th>Lenkit</th>
+    </tr>
+    {% for walk in walks %}
+    <tr>
+        <td>{{ walk.place }}</td>
+        <td>{{ walk.start }}</td>
+    </tr>
+    {% endfor %}
+
+{% endblock %}}

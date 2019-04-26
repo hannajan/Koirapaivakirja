@@ -47,3 +47,18 @@ class User(db.Model):
             response.append({"username":row[0], "dogs":row[1]})
 
         return response
+
+    @staticmethod
+    def list_walks(account_id):
+        stmt = text("SELECT DISTINCT(Walk.id), Walk.place, Walk.start FROM Walk"
+                    " JOIN walk_handler ON walk_handler.walk_id = walk.id"
+                    " JOIN handler ON handler.id = walk_handler.handler_id"
+                    "  WHERE handler.account_id = :account_id").params(account_id=account_id)
+                    
+        res = db.engine.execute(stmt)
+
+        response = []
+        for row in res:
+            response.append({"walk_id":row[0], "place":row[1], "start":row[2]})
+
+        return response
