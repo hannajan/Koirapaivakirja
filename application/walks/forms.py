@@ -20,6 +20,7 @@ class WalkForm(FlaskForm):
     place = StringField("Paikka", [validators.Length(max=120, message = msgPlace)])
     length = FloatField("Pituus (km)", [validators.NumberRange(min=0.01, message = msgInt)])
     handlers = NoValidationSelectMultipleField("Hoitajat", choices=[], coerce=int)
+    dogs = NoValidationSelectMultipleField("Koirat", choices=[], coerce=int)
 
     class Meta:
         csrf = False

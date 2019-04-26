@@ -1,10 +1,11 @@
 from application import app, db
 from flask import render_template, request, redirect, url_for
 from flask_login import login_required, current_user
-from application.walks.models import Walk, WalkHandler
+from application.walks.models import Walk, WalkHandler, DogWalk
 from application.walks.forms import WalkForm
 from datetime import datetime
 from application.handlers.models import Handler
+from application.dogs.models import Dog
 
 
 @app.route("/walks/new/")
@@ -12,6 +13,7 @@ from application.handlers.models import Handler
 def walks_form():
     form = WalkForm()
     form.handlers.choices = [(handler.id, handler.name) for handler in Handler.query.filter_by(account_id=current_user.id).all()]
+    form.dogs.choices = [(dog.id, dog.name) for dog in Dog.query.filter_by(account_id=current_user.id).all()]
 
     return render_template("walks/new.html", form=form)
 
@@ -49,6 +51,10 @@ def walks_create():
     for handler_id in form.handlers.data:
         walkhandler = WalkHandler(walk.id, handler_id)
         db.session().add(walkhandler)
+
+    for dog_id in form.dogs.data:
+        dogwalk = DogWalk(walk.id, dog_id)
+        db.session().add(dogwalk)
 
     db.session().commit()
     

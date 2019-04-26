@@ -112,12 +112,19 @@
         </tr>
         <tr>
             <th>{{ form.handlers.label }}</th>
+            <th>{{ form.dogs.label }}</th>
         </tr>
         <td>
             {{ form.handlers(class="multiselect") }}
         </td>
         <td>
+            {{ form.dogs(class="multiselect") }}
+        </td>
+        <td>
             {% for error in form.handlers.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+            {% for error in form.dogs.errors %}
             <li>{{ error }}</li>
             {% endfor %}
         </td>

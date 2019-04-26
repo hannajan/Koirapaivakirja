@@ -22,3 +22,11 @@ class WalkHandler(db.Model):
     def __init__(self, walk_id, handler_id):
         self.walk_id = walk_id
         self.handler_id = handler_id
+
+class DogWalk(db.Model):
+    dog_id = db.Column(db.Integer, db.ForeignKey('dog.id'), primary_key=True, nullable = False)
+    walk_id = db.Column(db.Integer, db.ForeignKey('walk.id'), primary_key=True, nullable = False)
+
+    def __init__(self, walk_id, dog_id):
+        self.walk_id = walk_id
+        self.dog_id = dog_id
