@@ -8,7 +8,7 @@ from application.dogs.forms import DogForm
 @app.route("/dogs", methods=["GET"])
 @login_required
 def dogs_index():
-    return render_template("dogs/list.html")
+    return render_template("dogs/list.html", dogs = Dog.query.filter_by(account_id=current_user.id))
 
 @app.route("/dogs/new/")
 @login_required
