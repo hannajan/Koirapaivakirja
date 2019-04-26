@@ -31,8 +31,12 @@
                 <a class="nav-link" href="{{ url_for('walks_form') }}">Lisää lenkki</a>
             </li>
             <li>
+              <a class="nav-link" href="{{ url_for('walks_index') }}">Näytä lenkit</a>
+            </li>            
+            <li>
                 <a class="nav-link" href="{{ url_for('account_stat') }}">Tilastoja</a>
             </li>
+
           </ul>
           <div class="form-inline mt-2 mt-md-0">
             {% if current_user.is_authenticated %}
