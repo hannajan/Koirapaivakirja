@@ -54,7 +54,7 @@ class User(db.Model):
                     " JOIN walk_handler ON walk_handler.walk_id = walk.id"
                     " JOIN handler ON handler.id = walk_handler.handler_id"
                     "  WHERE handler.account_id = :account_id"
-                    " ORDER BY Walk.start DESC").params(account_id=account_id)
+                    " ORDER BY Walk.start DESC;").params(account_id=account_id)
 
         res = db.engine.execute(stmt)
 
